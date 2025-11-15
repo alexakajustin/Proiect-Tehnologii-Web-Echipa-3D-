@@ -1,107 +1,77 @@
-﻿# Proiect-Tehnologii-Web-Echipa-3D-
+# SPECIFICĂȚII DETALIATE, PLAN DE PROIECT, PREZENȚA UNUI PROIECT ÎN GIT - 16.11.2025
 
-# SPECIFICATII DETALIATE ȘI PLAN DE PROIECT
+## Specificatii detaliate
 
-## SPECIFICATII DETALIATE
+### Workflow
+1. Ai o pagina unde alegi daca esti **profesor** sau **student**  
+2. Daca esti profesor generezi automat un cod de activitate, daca esti student ai optiunea sa introduci codul unei activitati  
 
-### Workflow:
+### Profesor
+- Ai partea superioara a aplicatiei unde se desfasoara activitatea  
+- Dedesubt un log anonim unde poti vedea **data unei reactii** si **tipul de reactie/feedback** (o reactie din 4)  
 
-1. Ai o pagina unde alegi daca esti profesor sau student.
-2. Daca esti profesor generezi automat un cod de activitate, daca esti student ai optiunea sa introduci codul unei activitati.
+### Student
+- Partea de sus a ecranului este activitatea  
+- Partea de jos un UI cu cele 4 reactii, care este prezenta si nu se schimba niciodata pe perioada activitatii  
 
-### Profesor:
+### La sfarsitul activitatii
+#### Pentru studenti
+1. Poti da un feedback final care sa reflecte overall ce crede studentul  
+**SAU**  
+2. Activitatea se incheie fara optiunea de a mai da feedback  
 
-- Partea superioara a aplicatiei unde se desfasoara activitatea.
-- Dedesubt un log anonim unde poti vedea data unei reactii si tipul de reactie/feedback (o reactie din 4).
-
-### Student:
-
-- Partea de sus a ecranului e activitatea.
-- Partea de jos un UI cu cele 4 reactii, care este mereu prezent si nu se schimba pe durata activitatii.
-
-### Sfarsit activitate:
-
-#### Pentru studenti:
-
-1. Pot da un feedback final (overall rating)
-   sau
-2. Activitatea se incheie fara feedback final.
-
-#### Pentru profesor:
-
-- Profesorul se intoarce la home screen.
-- Log-ul cu feedback continuu este salvat într-un fisier.
+#### Pentru profesor
+- Profesorul se intoarce la home screen (butonul de generare cod activitate + nume etc.)  
+- Log-ul cu feedback-ul continuu este salvat intr-un fisier  
 
 ---
 
-## DESCRIERI DETALIATE INTERFETE
+## Descrieri detaliate
 
-### LOGIN SCREEN:
+### INTERFATA LOGIN SCREEN
+- Nume + parola si un radio profesor/student  
+- Se face validare si vei fi trimis la interfata Home Screen  
 
-- Nume + parola + radio profesor/student.
-- Validare și redirect la Home.
+### INTERFATA HOME SCREEN PROFESOR
+- Textbox pentru numele activitatii  
+- Buton care porneste activitatea  
+- Codul activitatii este generat automat si data este cea din momentul crearii  
+- Se schimba ecranul pe interfata activitate  
+- Exista un istoric al activitatilor din trecut acompaniate de rating-ul acestora  
 
-### HOME SCREEN PROFESOR:
+### INTERFATA HOME SCREEN STUDENT
+- Input unde introduci codul si se valideaza daca exista si este valabila la acel moment o activitate  
 
-- Textbox pentru numele activitatii.
-- Buton „Start activitate”.
-- Cod generat automat + data crearii.
-- Redirect spre interfata activitate.
-- Istoric activitati trecute + rating-urile lor.
+### INTERFATA ACTIVITATE PROFESOR
+- Partea de sus a ecranului este activitatea propriu-zisa  
+- In partea de jos (un sfert al ecranului) apare feedback-ul continuu ca un chat (data feedback-ului si tipul de feedback)  
+- Profesorul are acces la un buton care sa incheie activitatea (esti trimis la interfata de sfarsit a activitatii)  
 
-### HOME SCREEN STUDENT:
+### INTERFATA ACTIVITATE STUDENT
+- Partea de sus a ecranului reprezinta activitatea desfasurata de profesor  
+- Partea de jos a ecranului reprezinta 4 butoane cu feedback-ul respectiv, care pot fi apasate oricand  
 
-- Input pentru codul activitatii.
-- Validare daca exista si este activa.
+### INTERFATA SFARSIT ACTIVITATE PROFESOR
+- Un download button pentru log-ul de feedback  
+- Un ecran de statistici bazat pe feedback-ul continuu (descarcabil la alegere)  
+- Un buton care te intoarce la interfata de Home Screen  
 
-### ACTIVITATE PROFESOR:
-
-- Partea superioara: activitatea propriu-zisa.
-- Partea inferioara (1/4): feedback continuu tip chat (data + tip).
-- Buton „Incheie activitate”.
-
-### ACTIVITATE STUDENT:
-
-- Partea superioara: activitatea profesorului.
-- Partea inferioara: cele 4 butoane de feedback.
-
-### SFARSIT ACTIVITATE PROFESOR:
-
-- Buton pentru download log.
-- Statistici bazate pe feedback-ul continuu (optional descarcabile).
-- Buton de revenire la Home.
-
-### SFARSIT ACTIVITATE STUDENT:
-
-- Rating final 0–5.
-- Buton de revenire la Home.
+### INTERFATA SFARSIT ACTIVITATE STUDENT
+- Ai un feedback final pe care poti sa-l dai pentru cum crezi ca a fost activitatea overall (star rating 0-5)  
+- Un buton pentru a merge inapoi la Home Interface  
 
 ---
 
-## PLAN DE PROIECT
+## Plan de proiect
+- Realizarea unei aplicatii profesor–student cu feedback in timp real  
+- Frontend SPA (React.js) + Backend REST (Node.js + Express)  
+- Baza de date relationala + ORM  
+- Versionare in Git cu commit-uri incrementale si descrieri clare  
+- Deploy pe server (Azure / AWS / Render)  
 
-### Obiectiv general:
+---
 
-Implementarea unei aplicatii profesor–student cu feedback in timp real, backend REST, baza de date relationala si frontend SPA.
-
-### Tehnologii:
-
-- Frontend: React.js
-- Backend: Node.js + Express
-- ORM: ??
-- Baza de date: PostgreSQL / MySQL
-- Git: repository cu commit-uri incrementale
-- Deploy: Azure / AWS / Render
-
-### Functionalitati principale:
-
-- Login + roluri
-- Creare / join activitate
-- Trimitere feedback continuu
-- Salvare log
-- Statistici finale
-- Feedback final student
-- Istoric activitati profesor
-# Proiect-Tehnologii-Web-Echipa-3D-
-
-
+## Livrabile partiale
+1. **16.11.2025** - Specificatii detaliate, plan de proiect, prezenta unui proiect in git  
+2. **06.12.2025** - Serviciu RESTful functional + instructiuni de rulare  
+3. **Ultimul seminar** - Aplicatia completa + demo  
