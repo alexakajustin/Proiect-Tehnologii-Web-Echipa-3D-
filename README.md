@@ -88,7 +88,7 @@ Implementarea unei aplicatii profesor–student cu feedback in timp real, backen
 
 - Frontend: React.js
 - Backend: Node.js + Express
-- ORM: Sequelize / Prisma
+- ORM: ??
 - Baza de date: PostgreSQL / MySQL
 - Git: repository cu commit-uri incrementale
 - Deploy: Azure / AWS / Render
@@ -103,4 +103,5 @@ Implementarea unei aplicatii profesor–student cu feedback in timp real, backen
 - Feedback final student
 - Istoric activitati profesor
 # Proiect-Tehnologii-Web-Echipa-3D-
+
 
