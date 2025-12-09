@@ -27,19 +27,19 @@ const ProfessorHome = () => {
       <header className="flex justify-between items-center mb-12">
         <div>
           <h1 className="text-3xl font-bold text-white mb-2">Professor Dashboard</h1>
-          <p className="text-slate-400">Welcome back, {user?.username}</p>
+          <p className="text-emerald-200">Welcome back, {user?.username}</p>
         </div>
       </header>
 
       <div className="grid md:grid-cols-2 gap-8">
         <div className="card">
-          <div className="flex items-center gap-3 mb-6 text-indigo-400">
+          <div className="flex items-center gap-3 mb-6 text-primary">
             <Plus size={24} />
             <h2 className="text-xl font-semibold">New Activity</h2>
           </div>
           <form onSubmit={createActivity} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-2 text-slate-300">Activity Name</label>
+              <label className="block text-sm font-medium mb-2 text-emerald-100">Activity Name</label>
               <input
                 type="text"
                 className="input-field"
@@ -56,11 +56,11 @@ const ProfessorHome = () => {
         </div>
 
         <div className="card opacity-50 cursor-not-allowed">
-          <div className="flex items-center gap-3 mb-6 text-pink-400">
+          <div className="flex items-center gap-3 mb-6 text-secondary">
             <History size={24} />
             <h2 className="text-xl font-semibold">History</h2>
           </div>
-          <p className="text-slate-400 text-sm">
+          <p className="text-emerald-400/60 text-sm">
             Past activities will appear here. (Not implemented in this version)
           </p>
         </div>

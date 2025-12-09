@@ -25,14 +25,14 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-slate-900 to-slate-800">
+    <div className="flex items-center justify-center min-h-screen bg-dark">
       <div className="card w-full max-w-md">
-        <h1 className="text-3xl font-bold text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-pink-500">
+        <h1 className="text-3xl font-bold text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
           Welcome Back
         </h1>
         <form onSubmit={handleLogin} className="space-y-6">
           <div>
-            <label className="block text-sm font-medium mb-2 text-slate-300">Username</label>
+            <label className="block text-sm font-medium mb-2 text-emerald-100">Username</label>
             <input
               type="text"
               className="input-field"
@@ -49,8 +49,8 @@ const Login = () => {
               onClick={() => setRole('student')}
               className={`p-4 rounded-xl border flex flex-col items-center gap-2 transition-all ${
                 role === 'student' 
-                  ? 'bg-indigo-500/20 border-indigo-500 text-indigo-400' 
-                  : 'bg-slate-800 border-slate-700 text-slate-400 hover:bg-slate-700'
+                  ? 'bg-primary/20 border-primary text-primary' 
+                  : 'bg-emerald-900/40 border-emerald-800 text-emerald-400/60 hover:bg-emerald-800/60'
               }`}
             >
               <User size={24} />
@@ -61,8 +61,8 @@ const Login = () => {
               onClick={() => setRole('professor')}
               className={`p-4 rounded-xl border flex flex-col items-center gap-2 transition-all ${
                 role === 'professor' 
-                  ? 'bg-pink-500/20 border-pink-500 text-pink-400' 
-                  : 'bg-slate-800 border-slate-700 text-slate-400 hover:bg-slate-700'
+                  ? 'bg-secondary/20 border-secondary text-secondary' 
+                  : 'bg-emerald-900/40 border-emerald-800 text-emerald-400/60 hover:bg-emerald-800/60'
               }`}
             >
               <GraduationCap size={24} />

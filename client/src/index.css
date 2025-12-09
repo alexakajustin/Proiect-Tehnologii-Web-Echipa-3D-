@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #4F46E5;
-  --color-secondary: #EC4899;
-  --color-dark: #0F172A;
-  --color-light: #F8FAFC;
+  --color-primary: #10B981;
+  --color-secondary: #84CC16;
+  --color-dark: #022C22;
+  --color-light: #ECFDF5;
   --font-sans: Inter, sans-serif;
 }
 
@@ -19,15 +19,15 @@
     @apply px-4 py-2 rounded-lg font-semibold transition-all duration-200 active:scale-95;
   }
   .btn-primary {
-    @apply bg-primary hover:bg-indigo-500 text-white shadow-lg shadow-indigo-500/30;
+    @apply bg-primary hover:bg-emerald-600 text-white shadow-lg shadow-emerald-500/30;
   }
   .btn-secondary {
-    @apply bg-secondary hover:bg-pink-400 text-white shadow-lg shadow-pink-500/30;
+    @apply bg-secondary hover:bg-lime-600 text-white shadow-lg shadow-lime-500/30;
   }
   .input-field {
-    @apply w-full px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-white placeholder-slate-400;
+    @apply w-full px-4 py-2 bg-emerald-900/40 border border-emerald-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-white placeholder-emerald-300/50;
   }
   .card {
-    @apply bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-xl p-6 shadow-xl;
+    @apply bg-emerald-900/40 backdrop-blur-lg border border-emerald-800 rounded-xl p-6 shadow-xl;
   }
 }

@@ -24,7 +24,7 @@ const StudentHome = () => {
       <div className="card w-full max-w-md">
         <header className="mb-8 text-center">
           <h1 className="text-2xl font-bold text-white mb-2">Join Activity</h1>
-          <p className="text-slate-400">Enter the code provided by your professor</p>
+          <p className="text-emerald-200">Enter the code provided by your professor</p>
         </header>
 
         <form onSubmit={joinActivity} className="space-y-6">

@@ -7,10 +7,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#4F46E5', // Indigo 600
-        secondary: '#EC4899', // Pink 500
-        dark: '#0F172A', // Slate 900
-        light: '#F8FAFC', // Slate 50
+        primary: '#10B981', // Emerald 500
+        secondary: '#84CC16', // Lime 500
+        dark: '#022C22', // Emerald 950 - Deep Forest
+        light: '#ECFDF5', // Emerald 50
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
