@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { LogIn } from 'lucide-react';
+import API_URL from '../config/api';
 
 const StudentHome = () => {
   const [code, setCode] = useState('');
@@ -18,7 +19,7 @@ const StudentHome = () => {
   const joinActivity = async (e) => {
     e.preventDefault();
     try {
-      await axios.get(`http://localhost:5000/api/activities/${code}`);
+      await axios.get(`${API_URL}/api/activities/${code}`);
       navigate(`/student/activity/${code}`);
     } catch (err) {
       console.error(err);

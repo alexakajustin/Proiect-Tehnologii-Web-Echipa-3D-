@@ -5,7 +5,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Plus, History, Clock, FileText } from "lucide-react";
+import { Plus, History } from "lucide-react";
+import API_URL from "../config/api";
 
 const ProfessorHome = () => {
   const [activityName, setActivityName] = useState("");
@@ -25,9 +26,7 @@ const ProfessorHome = () => {
   const fetchHistory = async () => {
     if (!user?.id) return;
     try {
-      const res = await axios.get(
-        `http://localhost:5000/api/professors/${user.id}/activities`
-      );
+      const res = await axios.get(`${API_URL}/api/professors/${user.id}/activities`);
       setHistory(res.data);
     } catch (err) {
       console.error("Failed to fetch history", err);
@@ -40,7 +39,7 @@ const ProfessorHome = () => {
   const createActivity = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/activities", {
+      const res = await axios.post(`${API_URL}/api/activities`, {
         professorId: user.id,
         name: activityName,
         description: description,

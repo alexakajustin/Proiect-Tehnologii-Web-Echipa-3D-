@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { User, GraduationCap } from 'lucide-react';
+import API_URL from '../config/api';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -19,7 +20,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', { username, role });
+      const res = await axios.post(`${API_URL}/api/auth/login`, { username, role });
       localStorage.setItem('user', JSON.stringify(res.data));
       if (role === 'professor') {
         navigate('/professor/home');

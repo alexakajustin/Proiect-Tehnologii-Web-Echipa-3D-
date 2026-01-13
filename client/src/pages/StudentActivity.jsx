@@ -7,8 +7,9 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import io from "socket.io-client";
 import axios from "axios";
+import API_URL from "../config/api";
 
-const socket = io("http://localhost:5000");
+const socket = io(API_URL);
 
 /**
  * Countdown timer component
@@ -50,9 +51,7 @@ const StudentActivity = () => {
      */
     const fetchActivity = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:5000/api/activities/${code}`
-        );
+        const res = await axios.get(`${API_URL}/api/activities/${code}`);
         setActivity(res.data);
       } catch (err) {
         alert("Activity not found");

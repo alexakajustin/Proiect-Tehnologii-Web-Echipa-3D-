@@ -8,8 +8,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import io from "socket.io-client";
 import axios from "axios";
 import { StopCircle, Users, Clock } from "lucide-react";
+import API_URL from "../config/api";
 
-const socket = io("http://localhost:5000");
+const socket = io(API_URL);
 
 /**
  * Countdown timer component with callback on expiry
@@ -53,9 +54,7 @@ const ProfessorActivity = () => {
      */
     const fetchActivity = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:5000/api/activities/${code}`
-        );
+        const res = await axios.get(`${API_URL}/api/activities/${code}`);
         setActivity(res.data);
       } catch (err) {
         alert("Error loading activity");
@@ -68,9 +67,7 @@ const ProfessorActivity = () => {
      */
     const fetchFeedbacks = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:5000/api/activities/${code}/feedbacks`
-        );
+        const res = await axios.get(`${API_URL}/api/activities/${code}/feedbacks`);
         setFeedbacks(res.data);
       } catch (err) {
         console.error("Error loading feedbacks", err);
@@ -107,7 +104,7 @@ const ProfessorActivity = () => {
   const endActivity = async () => {
     if (window.confirm("Are you sure you want to end this activity?")) {
       try {
-        await axios.put(`http://localhost:5000/api/activities/${code}/end`);
+        await axios.put(`${API_URL}/api/activities/${code}/end`);
         setActivity((prev) => ({ ...prev, isActive: false }));
       } catch (err) {
         alert("Error ending activity");
