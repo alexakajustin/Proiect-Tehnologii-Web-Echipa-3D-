@@ -973,3 +973,113 @@ textarea.input-field {
 .space-y-3>*+* {
   margin-top: 0.75rem;
 }
+
+/* ==================== Whiteboard ==================== */
+.whiteboard-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-slate-800);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.whiteboard-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background-color: var(--color-slate-900);
+  border-bottom: 1px solid var(--color-slate-700);
+  flex-wrap: wrap;
+}
+
+.tool-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-slate-600);
+  background-color: var(--color-slate-800);
+  color: var(--color-slate-300);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tool-btn:hover {
+  background-color: var(--color-slate-700);
+}
+
+.tool-btn.active {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
+
+.size-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-slate-400);
+  font-size: 0.875rem;
+}
+
+.size-control input[type="range"] {
+  width: 100px;
+  accent-color: var(--color-primary);
+}
+
+.clear-btn {
+  padding: 0.5rem 1rem;
+  background-color: rgba(239, 68, 68, 0.2);
+  color: var(--color-red-400);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.clear-btn:hover {
+  background-color: rgba(239, 68, 68, 0.3);
+}
+
+.whiteboard-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  background-color: #ffffff;
+}
+
+.whiteboard-view-only {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+}
+
+/* ==================== Student Activity Layout ==================== */
+.student-activity-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .student-activity-grid {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.feedback-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

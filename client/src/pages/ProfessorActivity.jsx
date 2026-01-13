@@ -7,8 +7,9 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import io from "socket.io-client";
 import axios from "axios";
-import { StopCircle, Users, Clock } from "lucide-react";
+import { StopCircle, Clock } from "lucide-react";
 import API_URL from "../config/api";
+import Whiteboard from "../components/Whiteboard";
 
 const socket = io(API_URL);
 
@@ -197,13 +198,9 @@ const ProfessorActivity = () => {
 
       {/* Main Content Grid */}
       <div className="grid-professor">
-        {/* Activity Content Area Placeholder */}
-        <div className="card card-dashed activity-placeholder">
-          <div className="content">
-            <Users size={48} className="icon" style={{ margin: '0 auto 1rem' }} />
-            <p className="text-lg font-medium">Activity Content Area</p>
-            <p className="text-sm">Project this screen for students to see the code</p>
-          </div>
+        {/* Whiteboard - Professor can draw */}
+        <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
+          <Whiteboard socket={socket} activityCode={code} canDraw={activity?.isActive} />
         </div>
 
         {/* Live Feedback Log */}

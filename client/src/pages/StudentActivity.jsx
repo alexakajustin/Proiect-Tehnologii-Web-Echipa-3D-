@@ -8,6 +8,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import io from "socket.io-client";
 import axios from "axios";
 import API_URL from "../config/api";
+import Whiteboard from "../components/Whiteboard";
 
 const socket = io(API_URL);
 
@@ -106,7 +107,7 @@ const StudentActivity = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col p-4 max-w-md mx-auto">
+    <div className="min-h-screen flex flex-col p-4 max-w-4xl mx-auto">
       <header className="mb-8 text-center pt-8">
         <h1 className="text-2xl font-bold text-white mb-2">{activity.name}</h1>
         <div className="text-slate-400 font-mono text-lg mb-4">
@@ -136,6 +137,12 @@ const StudentActivity = () => {
         )}
       </header>
 
+      {/* Whiteboard - View Only (full width) */}
+      <div className="card" style={{ padding: 0, overflow: 'hidden', marginBottom: '1.5rem' }}>
+        <Whiteboard socket={socket} activityCode={code} canDraw={false} />
+      </div>
+
+      {/* Feedback Buttons (below whiteboard) */}
       <div className={`feedback-grid ${!activity.isActive ? 'disabled' : ''}`}>
         {reactions.map((r) => (
           <button
@@ -152,7 +159,7 @@ const StudentActivity = () => {
       </div>
 
       {activity.isActive && (
-        <p className="text-center text-slate-500 text-sm">
+        <p className="text-center text-slate-500 text-sm" style={{ marginTop: '1rem' }}>
           Tap a button to send feedback instantly
         </p>
       )}

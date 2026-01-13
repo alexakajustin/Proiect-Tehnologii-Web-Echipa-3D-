@@ -217,12 +217,20 @@ app.get("/api/activities/:code/feedbacks", async (req, res) => {
 
 // --- SOCKET.IO ---
 
+// Store canvas drawing history per activity (in-memory)
+const canvasStates = {};
+
 io.on("connection", (socket) => {
   console.log("User connected:", socket.id);
 
   socket.on("join_activity", (code) => {
     socket.join(code);
     console.log(`User ${socket.id} joined activity ${code}`);
+
+    // Send current canvas state to the new joiner
+    if (canvasStates[code] && canvasStates[code].length > 0) {
+      socket.emit("canvas_state", { activityCode: code, lines: canvasStates[code] });
+    }
   });
 
   socket.on("send_feedback", async (data) => {
@@ -247,6 +255,34 @@ io.on("connection", (socket) => {
       io.to(activityCode).emit("receive_feedback", feedback);
     } catch (err) {
       console.error("Error saving feedback:", err);
+    }
+  });
+
+  // Whiteboard drawing - store and broadcast to all in room
+  socket.on("draw_line", (data) => {
+    // Initialize array if needed
+    if (!canvasStates[data.activityCode]) {
+      canvasStates[data.activityCode] = [];
+    }
+    // Store the line
+    canvasStates[data.activityCode].push(data);
+    // Broadcast to others
+    socket.to(data.activityCode).emit("draw_line", data);
+  });
+
+  // Whiteboard clear - clear storage and broadcast to all in room
+  socket.on("clear_canvas", (data) => {
+    // Clear stored lines
+    canvasStates[data.activityCode] = [];
+    // Broadcast to others
+    socket.to(data.activityCode).emit("clear_canvas", data);
+  });
+
+  // Request canvas state (for components that mount after join)
+  socket.on("request_canvas_state", (data) => {
+    const { activityCode } = data;
+    if (canvasStates[activityCode] && canvasStates[activityCode].length > 0) {
+      socket.emit("canvas_state", { activityCode, lines: canvasStates[activityCode] });
     }
   });
 
