@@ -5,7 +5,7 @@ const http = require("http");
 const { Server } = require("socket.io");
 const { v4: uuidv4 } = require("uuid");
 const sequelize = require("./database");
-const { Activity, Feedback } = require("./models");
+const { User, Activity, Feedback } = require("./models");
 
 dotenv.config();
 
@@ -64,14 +64,53 @@ const closeActivity = async (code) => {
 
 // --- API ROUTES ---
 
-// Auth (Mock)
-app.post("/api/auth/login", (req, res) => {
-  const { username, role } = req.body;
-  if (!username || !role)
-    return res.status(400).json({ error: "Missing fields" });
+// Register new user
+app.post("/api/auth/register", async (req, res) => {
+  try {
+    const { username, password, role } = req.body;
+    if (!username || !password || !role) {
+      return res.status(400).json({ error: "Missing fields" });
+    }
 
-  const user = { id: uuidv4(), username, role };
-  res.json(user);
+    // Check if user already exists
+    const existingUser = await User.findOne({ where: { username } });
+    if (existingUser) {
+      return res.status(400).json({ error: "Username already exists" });
+    }
+
+    // Create new user
+    const user = await User.create({ username, password, role });
+    res.json({ id: user.id, username: user.username, role: user.role });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+// Login existing user
+app.post("/api/auth/login", async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    if (!username || !password) {
+      return res.status(400).json({ error: "Missing fields" });
+    }
+
+    // Find user
+    const user = await User.findOne({ where: { username } });
+    if (!user) {
+      return res.status(401).json({ error: "User not found" });
+    }
+
+    // Check password (simple comparison - in production use bcrypt)
+    if (user.password !== password) {
+      return res.status(401).json({ error: "Invalid password" });
+    }
+
+    res.json({ id: user.id, username: user.username, role: user.role });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
 });
 
 // Create Activity (Professor)
